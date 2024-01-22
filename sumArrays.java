@@ -1,5 +1,7 @@
+import java.util.Scanner;
 
-public class Main{
+public class Main {
+
   public static int[] sumArrays(int[] x, int[] y) {
     // ผลลัพธ์ของฟังก์ชัน
     int[] result = new int[Math.max(x.length, y.length)];
@@ -23,14 +25,31 @@ public class Main{
     return result;
   }
 
-public static void main(String[] args){
-//รับค่า
-  int[] x = {};
-  int[] y = {};
-  int[] result = sumArrays(x, y);
-  for (int i = 0; i < result.length; i++) //วนลูป
-  {
-    System.out.println(result[i]);
-  }//ปริ้นค่าผลลัพธ์
+  public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+
+    // รับค่า
+    System.out.print("Enter elements x: ");
+    int n = scan.nextInt();
+    int[] x = new int[n];
+    for (int i = 0; i < n; i++) {
+      System.out.print ( "x [" +"number"+ (i+1) + "] = ");
+      x[i] = scan.nextInt();
+    }
+    System.out.print("Enter the elements y: ");
+    n = scan.nextInt();
+    int[] y = new int[n];
+    for (int i = 0; i < n; i++) {
+      System.out.print("y[" + "number" +(i+1)+ "] = ");
+      y[i] = scan.nextInt();
+    }
+
+    // เรียกใช้ฟังก์ชัน sumArrays()
+    int[] result = sumArrays(x, y);
+
+    // พิมพ์ผลลัพธ์
+    for (int i = 0; i < result.length; i++) {
+      System.out.println("number "+(i+1)+" = "+result[i]);
+    }
+  }
 }
- } 
