@@ -1,60 +1,65 @@
+import java.util.Arrays;
+import java.util.Random;
 
-public class ArraySorting {
+public class Main {
+   private static int count = 0;
+   private int[] a;
 
-    private int[] a;
-    private int size;
-    private static int count;
+   
+   public Main() {
+       this(5);
+   }
 
-    public ArraySorting() {
-        this(5);
-    }
+   
+   public Main(int size) {
+       a = new int[size];
+       count++;
+       insertValues();
+   }
 
-    public ArraySorting(int size) {
-        this.size = size;
-        a = new int[size];
-        count++;
-    }
+   
+   public void sort() {
+       Arrays.sort(a);
+       reverseArray();
+   }
 
-    public void sort() {
-        int temp;
-        for (int i = 0; i < size; i++) {
-            for (int j = i + 1; j < size; j++) {
-                if (a[i] > a[j]) {
-                    temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
-                }
-            }
-        }
-    }
+   
+   public void display() {
+       System.out.println(Arrays.toString(a));
+   }
 
-    public void display() {
-        for (int i = 0; i < size; i++) {
-            System.out.println(a[i]);
-        }
-    }
+   
+   public void displayMin() {
+       int min = a[0];
+       for (int value : a) {
+           if (value < min) {
+               min = value;
+           }
+       }
+       System.out.println("ค่าน้อยที่สุดคือ: " + min);
+   }
 
-    public int displayMin() {
-        int min = a[0];
-        for (int i = 1; i < size; i++) {
-            if (min > a[i]) {
-                min = a[i];
-            }
-        }
-        return min;
-    }
+   
+   private void insertValues() {
+       Random rand = new Random();
+       for (int i = 0; i < a.length; i++) {
+           a[i] = rand.nextInt(91) + 10; 
+       }
+ }
+   private void reverseArray() {
+       for (int i = 0; i < a.length / 2; i++) {
+           int temp = a[i];
+           a[i] = a[a.length - 1 - i];
+           a[a.length - 1 - i] = temp;
+       }
+   }
 
-    public void insertValue() {
-        for (int i = 0; i < size; i++) {
-            a[i] = (int) (Math.random() * 91) + 10;
-        }
-    }
 
-    public static void main(String[] args) {
-        ArraySorting as = new ArraySorting();
-        as.insertValue();
-        as.sort();
-        as.display();
-        System.out.println("ค่าที่น้อยที่สุดคือ " + as.displayMin());
-    }
+   public static void main(String[] args) {
+      
+       Main main = new Main();
+       main.sort();
+       main.display();
+       main.displayMin();
+   }
 }
