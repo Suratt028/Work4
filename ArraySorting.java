@@ -1,17 +1,17 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class Main {
+public class ArraySorting {
    private static int count = 0;
    private int[] a;
 
    
-   public Main() {
+   public ArraySorting() {
        this(5);
    }
 
    
-   public Main(int size) {
+   public ArraySorting(int size) {
        a = new int[size];
        count++;
        insertValues();
@@ -57,7 +57,7 @@ public class Main {
 
    public static void main(String[] args) {
       
-       Main main = new Main();
+       ArraySorting main = new ArraySorting();
        main.sort();
        main.display();
        main.displayMin();
